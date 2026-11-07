@@ -108,7 +108,7 @@ function sorting(panel){
   }).forEach(function(v){l.parent.appendChild(v.el)})}
   select.addEventListener("change",function(){reorder(select.value)});
   bar.appendChild(label);bar.appendChild(select);
-  l.parent.insertBefore(bar,l.parent.firstChild);
+  if(l.parent.tagName==="UL"||l.parent.tagName==="OL")l.parent.parentElement.insertBefore(bar,l.parent);else l.parent.insertBefore(bar,l.parent.firstChild);
   if(vary)reorder("priority");else select.value="original";
  })
 }
