@@ -23,7 +23,7 @@ async function open(pw){
  var k=await crypto.subtle.deriveKey({name:"PBKDF2",salt:d(P.salt),iterations:P.it,hash:"SHA-256"},k0,{name:"AES-GCM",length:256},false,["decrypt"]);
  var pt=await crypto.subtle.decrypt({name:"AES-GCM",iv:d(P.iv)},k,d(P.ct));
  return new TextDecoder().decode(pt)}
-function show(html){document.open();document.write(html);document.close()}
+function show(html){document.open();document.write(html);document.close();var patch=document.createElement('script');patch.src='./wewn-fix.js';document.head.appendChild(patch)}
 var f=document.getElementById("f"),e=document.getElementById("e");
 if(!window.crypto||!crypto.subtle){e.textContent="Ta przeglądarka wymaga połączenia https."}
 async function go(pw,remember){var b=document.getElementById("b");b.disabled=true;e.textContent="";
